@@ -10,5 +10,15 @@ demo_tuple2 = (True,False,False,True)
 demo_tuple3 = (True,1,"Delhi",23.56)
 
 print(demo_tuple1[1])
+print(len(demo_tuple1[1]))
 
+# Methods in Tuple
+print(demo_tuple.count("Delhi"))
+print(demo_tuple1.index("New York"))
 
+for x in demo_tuple1:
+    print(x)
+
+joined_tuple = demo_tuple1 + demo_tuple2 + demo_tuple3
+print(joined_tuple)
+print(type(joined_tuple))

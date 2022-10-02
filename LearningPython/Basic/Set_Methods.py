@@ -1,6 +1,5 @@
-
-demo_set1 = {"Delhi","Kolkata","Melbourne","Sydney"}
-demo_set2 = {"Delhi","Kolkata","Melbourne","Sydney","Lucknow","NewYork"}
+demo_set1 = {"Delhi", "Kolkata", "Melbourne", "Sydney"}
+demo_set2 = {"Delhi", "Kolkata", "Melbourne", "Sydney", "Lucknow", "NewYork"}
 
 '''
 # Joning two Sets
@@ -20,8 +19,8 @@ print(demo_set1)
 
 
 
-
 '''
+
 # keep Only Duplicates
 # intersection()
 # intersection_update()
@@ -33,10 +32,6 @@ print(demo_set3)
 demo_set1.intersection_update(demo_set2)
 print(demo_set3)
 '''
-
-
-
-
 
 '''
 # keep all excluding duplicates
@@ -50,10 +45,6 @@ print(demo_set1)
 
 '''
 
-
-
-
-
 '''
 # Return set containing difference between two or more sets
 # difference()
@@ -65,10 +56,6 @@ demo_set2.difference_update(demo_set1)
 print(demo_set1)
 '''
 
-
-
-
-
 '''
 # issubset()
 # issuperset()
@@ -79,4 +66,3 @@ z = demo_set2.issuperset(demo_set1)
 print(z)
 
 '''
-

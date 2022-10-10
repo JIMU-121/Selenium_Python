@@ -1,78 +1,76 @@
-# -------------------------HairDryers Product Fields ---------------------------
+# -------------------------Trimmer Product Fields ---------------------------
 
-
-# ------------------------------------------------------ Stock and Inventory Details
+DropDownList = '//ul[@role="menu"]//div[@class="MuiBox-root css-0"]//li'
+Search = '//input[@placeholder="Search"]'
+# ---------------------------------------------- Stock and Inventory Details --------------------------------------
 MeeshoPrice = '//input[@id="meesho_price"]'
 MRP = '//input[@id="product_mrp"]'
 ReturnPrice = '//input[@id="only_wrong_return_price"]'
 
 HSNCode = '//input[@id="hsn_code"]'
-HSNCodeList = '//ul[@role="menu"]//div[2]/li'
+# HSNCodeList = '//ul[@role="menu"]//div[2]/li'
 
 GST = '//input[@id="supplier_gst_percent"]'
-GSTList = '//ul[@role="menu"]//div[@class="MuiBox-root css-0"]//li'
+
 
 Weight = '//*[@id="product_weight_in_gms"]'
+
 Size = '//p[normalize-space()="Size"]//parent::div//parent::div//parent::div//input'
+LengthSize = '//input[@id="length_size"]'
+WidthSize = '//input[@id="width_size"]'
+
 ProductName = '//input[@id="product_name"]'
-alp = 'M'
+alp = 'NV-'
 
-# -------------------------------------------------------- Product Details
-BatteryChargeTime = '//input[@id="battery_charge_time"]'
-BatteryChargeTimeList = '//ul[@role="menu"]//div[@class="MuiBox-root css-0"]//li'
+# --------------------------------------------------- Product Details ------------------------------------------------
 
-Compatibility = '//input[@id="compatibility"]'
-CompatibilityList = '//ul[@role="menu"]//div[@class="MuiBox-root css-0"]//li'
-
-PlayTime = '//input[@id="play_time"]'
-PlayTimeList = '//ul[@role="menu"]//div[@class="MuiBox-root css-0"]//li'
+NetQuantity = '//input[@id="multipack"]'
 
 WarrantyPeriod = '//input[@id="warranty_period"]'
-WarrantyPeriodList = '//ul[@role="menu"]//div[@class="MuiBox-root css-0"]//li'
-
-WaterResistance = '//input[@id="water_resistant"]'
-WaterResistanceList = '//ul[@role="menu"]//div[@class="MuiBox-root css-0"]//li'
-
-WarrentyType = '//input[@id="warranty_type"]'
-WarrentyTypeList = '//ul[@role="menu"]//div[@class="MuiBox-root css-0"]//li'
-
-Type = '//input[@id="type"]'
-TypeList = '//ul[@role="menu"]//div[@class="MuiBox-root css-0"]//li'
-
-ModelName = '//input[@id="model_name"]'
-ModelNameList = '//ul[@role="menu"]//div[@class="MuiBox-root css-0"]//li'
-
-Color = '//input[@id="color"]'
-ColorList = '//ul[@role="menu"]//div[@class="MuiBox-root css-0"]//li'
 
 Country = '//input[@id="country_of_origin"]'
-CountryList = '//ul[@role="menu"]//div[@class="MuiBox-root css-0"]//li'
 
 Manufacture = '//input[@id="manufacturer_details"]'
 
 PackageDetail = '//input[@id="packer_details"]'
 
 
-# --------------------------------------------------- other Attribute
-BluetoothRange = '//input[@id="bluetooth_range"]'
-BluetoothRangeList = '//ul[@role="menu"]//div[@class="MuiBox-root css-0"]//li'
+# --------------------------------------------------- other Attribute -----------------------------------------------
 
-BluetoothVersion = '//input[@id="bluetooth_version"]'
-BluetoothVersionList = '//ul[@role="menu"]//div[@class="MuiBox-root css-0"]//li'
+# AdjustableTrimmingRange = '//input[@id="adjustable_trimming_range"]'
 
-ChargingType = '//input[@id="charging_type"]'
-ChargingTypeList = '//ul[@role="menu"]//div[@class="MuiBox-root css-0"]//li'
+Color = '//input[@id="color"]'
 
-NetQuantity = '//input[@id="multipack"]'
-NetQuantityList = '//ul[@role="menu"]//div[@class="MuiBox-root css-0"]//li'
+# Frequency = '//input[@id="frequency"]'
 
-Frequency = '//input[@id="frequency"]'
-FrequencyList = '//ul[@role="menu"]//div[@class="MuiBox-root css-0"]//li'
+Material = '//input[@id="material"]'
 
-NoiceCancelation = '//input[@id="noise_cancelling"]'
-NoiceCancelationList = '//ul[@role="menu"]//div[@class="MuiBox-root css-0"]//li'
+Temperature = '//input[@id="temperature"]'
 
-Mic = '//input[@id="mic"]'
-MicList = '//ul[@role="menu"]//div[@class="MuiBox-root css-0"]//li'
+
+
+# ChargingTime = '//input[@id="charging_time"]'
+
+# ClipSize = '//input[@id="clip_size"]'
+
+CordLength = '//input[@id="cord_length"]'
+
+IdealFor = '//input[@id="ideal_for"]'
+
+HeatUpTime = '//input[@id="heat_up_time"]'
+
+PowerConsumption = '//input[@id="power_consumption"]'
+
+Type = '//input[@id="type"]'
+
+Warranty = '//input[@id="warranty"]'
+
+OperatingVoltage = '//input[@id="operating_voltage"]'
+
+# Rechargeable = '//input[@id="rechargeable"]'
+
+WarrantyType = '//input[@id="warranty_type"]'
+
+# UseableWhileCharging = '//input[@id="useable_while_charging"]'
 
 Description = '//textarea[@id="comment"]'

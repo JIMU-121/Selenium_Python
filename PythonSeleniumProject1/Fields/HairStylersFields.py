@@ -34,23 +34,27 @@ PackageDetail = '//input[@id="packer_details"]'
 
 # --------------------------------------------------- other Attribute
 
-AdjustableTrimmingRange = '//input[@id="adjustable_trimming_range"]'
+# AdjustableTrimmingRange = '//input[@id="adjustable_trimming_range"]'
 
 Color = '//input[@id="color"]'
 
-Frequency = '//input[@id="frequency"]'
+# Frequency = '//input[@id="frequency"]'
 
 Material = '//input[@id="material"]'
 
+Temperature = '//input[@id="temperature"]'
+
 NetQuantity = '//input[@id="multipack"]'
 
-ChargingTime = '//input[@id="charging_time"]'
+# ChargingTime = '//input[@id="charging_time"]'
 
-ClipSize = '//input[@id="clip_size"]'
+# ClipSize = '//input[@id="clip_size"]'
 
 CordLength = '//input[@id="cord_length"]'
 
 IdealFor = '//input[@id="ideal_for"]'
+
+HeatUpTime = '//input[@id="heat_up_time"]'
 
 PowerConsumption = '//input[@id="power_consumption"]'
 
@@ -60,10 +64,10 @@ Warranty = '//input[@id="warranty"]'
 
 OperatingVoltage = '//input[@id="operating_voltage"]'
 
-Rechargeable = '//input[@id="rechargeable"]'
+# Rechargeable = '//input[@id="rechargeable"]'
 
 WarrantyType = '//input[@id="warranty_type"]'
 
-UseableWhileCharging = '//input[@id="useable_while_charging"]'
+# UseableWhileCharging = '//input[@id="useable_while_charging"]'
 
 Description = '//textarea[@id="comment"]'

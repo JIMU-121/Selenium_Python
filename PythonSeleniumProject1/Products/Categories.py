@@ -29,3 +29,12 @@ def Trimmer(driver):
     driver.find_element(By.XPATH, '//p[normalize-space()="Small appliances"]').click()  # Small appliances
     driver.find_element(By.XPATH, '//p[normalize-space()="Personal Grooming"]').click() # Personal Grooming
     driver.find_element(By.XPATH, '//p[normalize-space()="Trimmers"]').click() # Trimmer
+
+
+def HairStylers(driver):
+
+    driver.find_element(By.XPATH, '//p[normalize-space()="Appliances"]').click()  # Appliances
+    driver.find_element(By.XPATH, '//p[normalize-space()="Small appliances"]').click()  # Small appliances
+    driver.find_element(By.XPATH, '//p[normalize-space()="Personal Grooming"]').click() # Personal Grooming
+    driver.find_element(By.XPATH, '//p[normalize-space()="Hair Stylers"]').click() # Hair Stylers
+

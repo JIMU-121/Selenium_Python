@@ -7,18 +7,17 @@ from selenium.webdriver.common import keys
 
 
 
-
 def TrimmerInventoryDetails(driver,x):
     # ---------------------- Price, Size and Inventory ---------------------------------
     print("Action : Trimmer Inventory Details")
     # Meesho Price
-    driver.find_element(By.XPATH, Fields.MeeshoPrice).send_keys('400')
+    driver.find_element(By.XPATH, Fields.MeeshoPrice).send_keys('550')
 
 
 
     # Return price
     driver.find_element(By.XPATH, Fields.ReturnPrice).send_keys(keys.Keys.CONTROL + 'a' + keys.Keys.BACK_SPACE)
-    driver.find_element(By.XPATH, Fields.ReturnPrice).send_keys('395')
+    driver.find_element(By.XPATH, Fields.ReturnPrice).send_keys('545')
 
     # MRP
     driver.find_element(By.XPATH, Fields.MRP).send_keys('999')
@@ -55,7 +54,7 @@ def TrimmerInventoryDetails(driver,x):
 
 
     # Product Name
-    clipboard.copy('1290 '+x+' hair dryers Professional Folding Hair Dryer & Kubra 2025 Cordless Trimmer & Cable Protector Pack of 4')
+    clipboard.copy('6130 '+x+' Hair Dryer for Men and Women Hair Dryer  (1800 W, Black) & 2025 Cordless Trimmer + Cable Protector')
     driver.find_element(By.XPATH, Fields.ProductName).send_keys(keys.Keys.CONTROL + 'v')
 
 
@@ -75,7 +74,7 @@ def TrimmerInventoryDetails(driver,x):
     time.sleep(1)
     LengthSizeList = driver.find_elements(By.XPATH, Fields.DropDownList)
     for r in LengthSizeList:
-        if '11' == r.text:
+        if '10' == r.text:
             r.click()
             break
 
@@ -114,7 +113,7 @@ def TrimmerProductDetails(driver):
     # driver.find_element(By.XPATH, Fields.Search).send_keys('4')
     # time.sleep(2)
     for r in BatteryRunTimeList:
-        if '45 Mins' in r.text:
+        if '55 Mins' in r.text:
             r.click()
             break
 
@@ -122,10 +121,10 @@ def TrimmerProductDetails(driver):
 
 
     # Manufacture Details
-    driver.find_element(By.XPATH, Fields.Manufacture).send_keys('ASD')
+    driver.find_element(By.XPATH, Fields.Manufacture).send_keys('ASDFGHJ')
 
     # Package Details
-    driver.find_element(By.XPATH, Fields.PackageDetail).send_keys('ASD')
+    driver.find_element(By.XPATH, Fields.PackageDetail).send_keys('ASDFG')
 
 
 
@@ -162,31 +161,31 @@ def TrimmerOtherAttributes(driver):
     driver.implicitly_wait(1)
     ClipSizeList = driver.find_elements(By.XPATH, Fields.DropDownList)
     for r in ClipSizeList:
-        if '10 mm' in r.text:
+        if '1 mm' in r.text:
             r.click()
             break
 
-    # driver.implicitly_wait(1)
-    # # Color
-    # driver.find_element(By.XPATH, Fields.Color).click()
-    # # time.sleep(1)
-    # driver.implicitly_wait(1)
-    # ColorList = driver.find_elements(By.XPATH, Fields.DropDownList)
-    # for r in ColorList:
-    #     if 'Black' in r.text:
-    #         r.click()
-    #         break
+    driver.implicitly_wait(1)
+    # Color
+    driver.find_element(By.XPATH, Fields.Color).click()
+    # time.sleep(1)
+    driver.implicitly_wait(1)
+    ColorList = driver.find_elements(By.XPATH, Fields.DropDownList)
+    for r in ColorList:
+        if 'Black' in r.text:
+            r.click()
+            break
 
-    # driver.implicitly_wait(1)
-    # # Frequency
-    # driver.find_element(By.XPATH, Fields.Frequency).click()
-    # # time.sleep(1)
-    # driver.implicitly_wait(1)
-    # FrequencyList = driver.find_elements(By.XPATH, Fields.DropDownList)
-    # for r in FrequencyList:
-    #     if '100 Hz' in r.text:
-    #         r.click()
-    #         break
+    driver.implicitly_wait(1)
+    # Frequency
+    driver.find_element(By.XPATH, Fields.Frequency).click()
+    # time.sleep(1)
+    driver.implicitly_wait(1)
+    FrequencyList = driver.find_elements(By.XPATH, Fields.DropDownList)
+    for r in FrequencyList:
+        if '100 Hz' in r.text:
+            r.click()
+            break
 
     # # Material
     # driver.find_element(By.XPATH, Fields.Material).click()
@@ -199,15 +198,15 @@ def TrimmerOtherAttributes(driver):
     #         break
 
 
-    # CordLength
-    driver.find_element(By.XPATH, Fields.CordLength).click()
-    time.sleep(1)
-    driver.implicitly_wait(5)
-    CordLengthList = driver.find_elements(By.XPATH, Fields.DropDownList)
-    for r in CordLengthList:
-        if '1 Mtr' in r.text:
-            r.click()
-            break
+    # # CordLength
+    # driver.find_element(By.XPATH, Fields.CordLength).click()
+    # time.sleep(1)
+    # driver.implicitly_wait(5)
+    # CordLengthList = driver.find_elements(By.XPATH, Fields.DropDownList)
+    # for r in CordLengthList:
+    #     if '1 Mtr' in r.text:
+    #         r.click()
+    #         break
 
     driver.implicitly_wait(1)
     # IdealFor
@@ -313,5 +312,5 @@ def TrimmerOtherAttributes(driver):
 
 
     # Description
-    clipboard.copy('NV-1290 Electric Foldable Hair Dryer with 2 Speed Control 1000 Watt, Get the sleek salon look for your hair with NV-1290 professional hairdryer. It is a 1000W cool-shot hair dryer that can be used to quickly dry up your wet hair as well as style it up. This professional hair dryer features a styling nozzle that is designed to push the airflow from the hairdryer to areas of your hair where you want it to concentrate the airflow. The finger diff-user that comes with this hair dryer helps you to achieve the look you want, be it sleek or wavy.')
+    clipboard.copy(r'6130 Hair Dryer for Men and Women Hair Dryer  (1800 W, Black) & 2025 Cordless Trimmer + Cable Protector')
     driver.find_element(By.XPATH, Fields.Description).send_keys(keys.Keys.CONTROL + 'v')

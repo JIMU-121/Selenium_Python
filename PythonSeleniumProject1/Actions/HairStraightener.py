@@ -1,3 +1,4 @@
+
 import  clipboard
 import time
 
@@ -5,20 +6,20 @@ from selenium.common import ElementClickInterceptedException, NoSuchElementExcep
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from Fields import HairDryersFilelds as Fields
+from Fields import HairStraightenerFields as Fields
 from selenium.webdriver.common import keys
 
 
 
-def HairDryerInventoryDetails(driver,x):
+def HairStraightenerInventoryDetails(driver,x):
     # ---------------------- Price, Size and Inventory ---------------------------------
 
     # Meesho Price
-    driver.find_element(By.XPATH, Fields.MeeshoPrice).send_keys('550')
+    driver.find_element(By.XPATH, Fields.MeeshoPrice).send_keys('480')
 
     # Return price
     driver.find_element(By.XPATH, Fields.ReturnPrice).send_keys(keys.Keys.CONTROL + 'a' + keys.Keys.BACK_SPACE)
-    driver.find_element(By.XPATH, Fields.ReturnPrice).send_keys('545')
+    driver.find_element(By.XPATH, Fields.ReturnPrice).send_keys('475')
 
     # MRP
     driver.find_element(By.XPATH, Fields.MRP).send_keys('999')
@@ -42,7 +43,7 @@ def HairDryerInventoryDetails(driver,x):
 
 
     # Product Name
-    clipboard.copy('6130 '+x+' Hair Dryer for Men and Women Hair Dryer  (1800 W, Black) & 2009 2in1 hair curler + Cable Protector')
+    clipboard.copy('N-1290 '+x+' Hair Dyer + Mini Straightener + 216 trimmer Personal Care Appliance Combo + cable protector (Hair Dryer, Hair Straightener, Trimmer, cable protector )')
     driver.find_element(By.XPATH, Fields.ProductName).send_keys(keys.Keys.CONTROL + 'v')
 
     # GST
@@ -77,9 +78,20 @@ def HairDryerInventoryDetails(driver,x):
     driver.find_element(By.XPATH, '//input[@id="inventory"]').send_keys('1000')
 
 
-def HairDryerProductDetails(driver):
+def HairStraightenerProductDetails(driver):
 
     print('Action : Hair Dryer Product Details')
+
+    # CordLength
+    driver.find_element(By.XPATH, Fields.CordLength).click()
+    time.sleep(1)
+    driver.implicitly_wait(5)
+    CordLengthList = driver.find_elements(By.XPATH, Fields.DropDownList)
+    for r in CordLengthList:
+        if '1 Mtr' in r.text:
+            driver.implicitly_wait(5)
+            r.click()
+            break
 
     # NetQuantity
     driver.find_element(By.XPATH, Fields.NetQuantity).click()
@@ -87,7 +99,7 @@ def HairDryerProductDetails(driver):
     driver.implicitly_wait(5)
     NetQuantityList = driver.find_elements(By.XPATH, Fields.DropDownList)
     for r in NetQuantityList:
-        if '2' == r.text:
+        if '3' == r.text:
             driver.implicitly_wait(5)
             r.click()
             break
@@ -123,31 +135,22 @@ def HairDryerProductDetails(driver):
     driver.execute_script("window.scrollBy(0,500)", "")
 
 
-def HairDryerOtherAttributes(driver):
+def HairStraightenerOtherAttributes(driver):
 
     print('Action : Hair Dryer Other Attributes')
 
-    # Color
-    driver.find_element(By.XPATH, Fields.Color).click()
-    time.sleep(1)
-    driver.implicitly_wait(5)
-    ColorList = driver.find_elements(By.XPATH, Fields.DropDownList)
-    for r in ColorList:
-        if 'Black' in r.text:
-            driver.implicitly_wait(5)
-            r.click()
-            break
+    # # Color
+    # driver.find_element(By.XPATH, Fields.Color).click()
+    # time.sleep(1)
+    # driver.implicitly_wait(5)
+    # ColorList = driver.find_elements(By.XPATH, Fields.DropDownList)
+    # for r in ColorList:
+    #     if 'Multicolor' in r.text:
+    #         driver.implicitly_wait(5)
+    #         r.click()
+    #         break
 
-    # CordLength
-    driver.find_element(By.XPATH, Fields.CordLength).click()
-    time.sleep(1)
-    driver.implicitly_wait(5)
-    CordLengthList = driver.find_elements(By.XPATH, Fields.DropDownList)
-    for r in CordLengthList:
-        if '1 Mtr' in r.text:
-            driver.implicitly_wait(5)
-            r.click()
-            break
+
 
     # HeatUpTime
     driver.find_element(By.XPATH, Fields.HeatUpTime).click()
@@ -174,17 +177,17 @@ def HairDryerOtherAttributes(driver):
     driver.implicitly_wait(5)
 
 
-    # driver.implicitly_wait(5)
-    # # Material
-    # driver.find_element(By.XPATH, Fields.Material).click()
-    # # time.sleep(1)
-    # driver.implicitly_wait(5)
-    # MaterialList = driver.find_elements(By.XPATH, Fields.DropDownList)
-    # for r in MaterialList:
-    #     if 'Plastic' in r.text:
-    #         driver.implicitly_wait(5)
-    #         r.click()
-    #         break
+    driver.implicitly_wait(5)
+    # Material
+    driver.find_element(By.XPATH, Fields.Material).click()
+    # time.sleep(1)
+    driver.implicitly_wait(5)
+    MaterialList = driver.find_elements(By.XPATH, Fields.DropDownList)
+    for r in MaterialList:
+        if 'Plastic' in r.text:
+            driver.implicitly_wait(5)
+            r.click()
+            break
 
 
     driver.implicitly_wait(5)
@@ -206,10 +209,24 @@ def HairDryerOtherAttributes(driver):
     driver.implicitly_wait(5)
     PowerConsumptionList = driver.find_elements(By.XPATH, Fields.DropDownList)
     for r in PowerConsumptionList:
-        if '1800 Watts' in r.text:
+        if '1000 Watts' in r.text:
             driver.implicitly_wait(5)
             r.click()
             break
+
+
+    driver.implicitly_wait(5)
+    # StraightningType
+    driver.find_element(By.XPATH, Fields.StraightningType).click()
+    # time.sleep(1)
+    driver.implicitly_wait(5)
+    StraightningTypeList = driver.find_elements(By.XPATH, Fields.DropDownList)
+    for r in StraightningTypeList:
+        if 'Temporary' in r.text:
+            driver.implicitly_wait(5)
+            r.click()
+            break
+
 
     driver.implicitly_wait(5)
     # Temperature
@@ -254,6 +271,17 @@ def HairDryerOtherAttributes(driver):
             r.click()
             break
 
+        # WarrantyPeriod
+    driver.find_element(By.XPATH, Fields.Warranty).click()
+    # time.sleep(1)
+    driver.implicitly_wait(5)
+    WarrantyList = driver.find_elements(By.XPATH, Fields.DropDownList)
+    for r in WarrantyList:
+        if '1 Year' == r.text:
+            driver.implicitly_wait(5)
+            r.click()
+            break
+
     # Description
-    clipboard.copy('6130 Hair Dryer for Men and Women Hair Dryer  (1800 W, Black) & 2009 2in1 hair curler + Cable Protector')
+    clipboard.copy('N-1290 Hair Dyer + Mini Straightener + 216 trimmer Personal Care Appliance Combo + cable protector (Hair Dryer, Hair Straightener, Trimmer, cable protector )')
     driver.find_element(By.XPATH, Fields.Description).send_keys(keys.Keys.CONTROL + 'v')

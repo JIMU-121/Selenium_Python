@@ -1,6 +1,7 @@
 import os
+import time
 
-FOLDER_PATH = r'C:\\Users\\bhatt\\Downloads\\Telegram Desktop\\folder 8\\slide'
+# FOLDER_PATH = r'C:\\Users\\bhatt\\Downloads\\Telegram Desktop\\1290 + 2035 + mini + 471\\images'
 
 
 def ProductImages(dir):
@@ -24,9 +25,13 @@ def SlideImages(dir):
 
     return SlideIMGs
 
-if __name__ == '__main__':
-    ab = SlideImages(FOLDER_PATH)
-    print(ab)
+# if __name__ == '__main__':
+#     ab = SlideImages(FOLDER_PATH)
+#     print(len(ab))
+#     for x in ab:
+#         time.sleep(1)
+#         a = x
+#         print(a)
 
 
 

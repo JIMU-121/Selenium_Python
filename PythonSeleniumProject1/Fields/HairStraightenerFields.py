@@ -28,11 +28,15 @@ NetQuantity = '//input[@id="multipack"]'
 
 WarrantyPeriod = '//input[@id="warranty_period"]'
 
+Warrenty = '//input[@id="warranty"]'
+
 Country = '//input[@id="country_of_origin"]'
 
 Manufacture = '//input[@id="manufacturer_details"]'
 
 PackageDetail = '//input[@id="packer_details"]'
+
+CordLength = '//input[@id="cord_length"]'
 
 
 # --------------------------------------------------- other Attribute -----------------------------------------------
@@ -53,11 +57,9 @@ Temperature = '//input[@id="temperature"]'
 
 # ClipSize = '//input[@id="clip_size"]'
 
-CordLength = '//input[@id="cord_length"]'
+StraightningType = "//input[@id='straightening_type']"
 
 IdealFor = '//input[@id="ideal_for"]'
-
-
 
 HeatUpTime = '//input[@id="heat_up_time"]'
 

@@ -56,7 +56,7 @@ def AnalogWatches_InventoryDetails(driver,x):
 
 
     # Product Name
-    clipboard.copy(x+' Men Boys Analog Watch - For Men & Men Formal Black Artificial Leather Belt {B2+G3}')
+    clipboard.copy(x+' Men Boys Analog Watch - For Men & Men Formal Black Artificial Leather Belt {B2+G2}')
     driver.find_element(By.XPATH, Fields.ProductName).send_keys(keys.Keys.CONTROL + 'v')
 
 
@@ -382,5 +382,5 @@ def AnalogWatches_OtherAttributes(driver):
 
     # Description
     driver.implicitly_wait(1)
-    clipboard.copy(r'Men Boys Analog Watch - For Men & Men Formal Black Artificial Leather Belt {B2+G3}')
+    clipboard.copy(r'Men Boys Analog Watch - For Men & Men Formal Black Artificial Leather Belt {B2+G2}')
     driver.find_element(By.XPATH, Fields.Description).send_keys(keys.Keys.CONTROL + 'v')

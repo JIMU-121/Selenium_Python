@@ -10,7 +10,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from ExtractImages import FetchingImages
 from Products import Fields, Actions, Categories
-from Actions import AnalogWatches_Action   as Action, Notifyer as Notify, ManageCache as Cache
+from Actions import Sunglass_Action   as Action, Notifyer as Notify, ManageCache as Cache
 from openpyxl import Workbook, load_workbook
 from numba import jit
 
@@ -18,9 +18,9 @@ from numba import jit
 
 
 # Files Path
-ProImgDir = 'C:\\Users\\bhatt\\Downloads\\Telegram Desktop\\b2+g3\\images'
-SlideImagesPath = 'C:\\Users\\bhatt\\Downloads\\Telegram Desktop\\b2+g3\\slide'
-path = 'C:\\Users\\bhatt\\Downloads\\Telegram Desktop\\b2+g3'
+ProImgDir = 'C:\\Users\\bhatt\\Downloads\\Telegram Desktop\\b2+s2\\images'
+SlideImagesPath = 'C:\\Users\\bhatt\\Downloads\\Telegram Desktop\\b2+s2\\slide'
+path = 'C:\\Users\\bhatt\\Downloads\\Telegram Desktop\\b2+s2'
 
 
 options = webdriver.ChromeOptions()
@@ -49,7 +49,7 @@ def UploadProducts(images, driver):
 
             OverAllTimeStarts = time.time()
             print('-----------------------------------------------------------------------------------')
-            # SlideImages = FetchingImages.SlideImages(SlideImagesPath)
+            SlideImages = FetchingImages.SlideImages(SlideImagesPath)
 
             a = ws2['A1']
             n = int(a.value)
@@ -64,11 +64,11 @@ def UploadProducts(images, driver):
             try:
 
                 driver.implicitly_wait(7)
-                Categories.Category(driver, Categories.AnalogWatches)
+                Categories.Category(driver, Categories.Category_Sunglass(driver))
             except Exception as e:
                 driver.refresh()
                 driver.implicitly_wait(10)
-                Categories.Category(driver, Categories.Category_AnalogWatches())
+                Categories.Category(driver, Categories.Category_Sunglass(driver))
 
             # Upload Product Front Image
             UploadProdImage = driver.find_element(By.XPATH, '//*[@id="addImages"]').send_keys(x)
@@ -77,7 +77,7 @@ def UploadProducts(images, driver):
             driver.implicitly_wait(30)
 
             # Clicking to Continue button
-            Continue = '//button[@class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButtonBase-root css-1n1ggul"]'
+            Continue = "//div[@role='dialog']/div/div[3]/button/span[contains(text(), 'Continue')]"
             ContinueBtn = driver.find_element(By.XPATH, Continue)
             ContinueBtn.click()
 
@@ -97,12 +97,12 @@ def UploadProducts(images, driver):
             driver.execute_script("window.scrollBy(0, 200)", "")
 
             driver.implicitly_wait(20)
-            # UploadSlideImages = driver.find_element(By.XPATH, '//input[@id="addMoreImagesInput"]')
-            #
-            # # Upload Product Slide Image
-            # for s in SlideImages:
-            #     UploadSlideImages.send_keys(s)
-            #     time.sleep(2)
+            UploadSlideImages = driver.find_element(By.XPATH, '//input[@id="addMoreImagesInput"]')
+
+            # Upload Product Slide Image
+            for s in SlideImages:
+                UploadSlideImages.send_keys(s)
+                time.sleep(1)
 
             char1 = random.choice(range(65, 90))
             char2 = random.choice(range(65, 90))
@@ -110,7 +110,7 @@ def UploadProducts(images, driver):
             alpha = chr(char1)
             # ------------------------------------------------------------------------------------------------------
             start = time.time()
-            Action.AnalogWatches_InventoryDetails(driver, alpha)
+            Action.Sunglass_InventoryDetails(driver, alpha)
             end = time.time()
             t = end - start
             print("TIme Taken : " + str(t))
@@ -119,7 +119,7 @@ def UploadProducts(images, driver):
 
             # ------------------------------------------------------------------------------------------------------
             start = time.time()
-            Action.AnalogWatches_ProductDetails(driver)
+            Action.Sunglass_ProductDetails(driver)
             end = time.time()
             t = end - start
             print("Time Taken : " + str(t))
@@ -128,7 +128,7 @@ def UploadProducts(images, driver):
 
             # ------------------------------------------------------------------------------------------------------
             start = time.time()
-            Action.AnalogWatches_OtherAttributes(driver)
+            Action.Sunglass_OtherAttributes(driver)
             end = time.time()
             t = end - start
             print("Time Taken : " + str(t))
@@ -139,11 +139,10 @@ def UploadProducts(images, driver):
             row += 1
             ibtn += 1
 
-            SubmitButton = '//button[@class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root css-16z39kb"]'
+            SubmitButton = "//div[@class='css-nsnuu0']/div/button/span[contains(text(), 'Submit')]//parent::button"
             driver.find_element(By.XPATH, SubmitButton).click()
             time.sleep(1)
-            driver.find_element(By.XPATH,
-                                '//button[@class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButtonBase-root css-1bc15yu"]').click()
+            driver.find_element(By.XPATH, "//div[@role='dialog']/div/div[2]/button/span[contains(text(), 'Proceed')]//parent::button").click()
             # os.replace(x, destination)
             # time.sleep(10)
             driver.implicitly_wait(15)

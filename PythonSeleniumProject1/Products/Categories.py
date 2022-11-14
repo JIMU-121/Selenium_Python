@@ -7,6 +7,7 @@ HairStylers = "HairStylers"
 HairStraightener = "HairStraightener"
 Wallets = "Wallets"
 AnalogWatches = "AnalogWatches"
+Sunglasses = "Sunglasses"
 
 def Category_Bluetooth_HeadPhones_And_EarPhones(driver):
 
@@ -68,6 +69,12 @@ def Category_AnalogWatches(driver):
     driver.find_element(By.XPATH, '//p[normalize-space()="Analog Watches"]').click() # Wallets
 
 
+def Category_Sunglass(driver):
+
+    driver.find_element(By.XPATH, '//p[normalize-space()="Men Fashion"]').click()  # Men Fashion
+    driver.find_element(By.XPATH, '//p[normalize-space()="Accessories"]').click()  # Accessories
+    driver.find_element(By.XPATH, "//div[@class='css-ebwp1h']/div[3]//p[normalize-space()='Sunglasses']").click() # Sunglasses
+    driver.find_element(By.XPATH, "//div[@class='css-ebwp1h']/div[4]//p[normalize-space()='Sunglasses']").click() # Sunglasses
 
 
 def Category(driver, category):
@@ -85,3 +92,5 @@ def Category(driver, category):
         Category_Wallets(driver)
     elif category == AnalogWatches:
         Category_AnalogWatches(driver)
+    elif category == Sunglasses:
+        Category_Sunglass(driver)

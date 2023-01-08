@@ -1,14 +1,25 @@
 import time
-import clipboard
 from selenium.common import ElementClickInterceptedException
-from selenium.webdriver.common import keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
-from selenium import webdriver
-from numba import jit
 from selenium.webdriver.support.wait import WebDriverWait
 
-from Products import Fields
+
+
+# Email Accounts
+shreejulejha_ronny = "ronnyronny1992@gmail.com"
+shribalaji = "shribalajimotersagar@gmail.com"
+thegiftarea = "thegiftarea.in@gmail.com"
+atrsmarketing = "artsmarketing.in@gmail.com"
+prohra8 = "PROHRA8@GMAIL.COM"
+
+# email_AC = shreejulejha_ronny
+# email_AC = shribalaji
+# email_AC = thegiftarea
+email_AC = atrsmarketing
+# email_AC = prohra8
+
+
 
 # @jit(nopython=True)
 def Login(driver):
@@ -21,11 +32,7 @@ def Login(driver):
 
     emailid = driver.find_element(
         By.XPATH, '//*[@id="mui-1"]')
-    # emailid.send_keys('ronnyronny1992@gmail.com')
-    # emailid.send_keys('shribalajimotersagar@gmail.com')
-    # emailid.send_keys('thegiftarea.in@gmail.com')
-    # emailid.send_keys('artsmarketing.in@gmail.com')
-    emailid.send_keys('PROHRA8@GMAIL.COM')
+    emailid.send_keys(email_AC)
 
     password = driver.find_element(
         By.XPATH, '//*[@id="mui-2"]')

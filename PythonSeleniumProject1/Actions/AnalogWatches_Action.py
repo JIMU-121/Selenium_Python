@@ -1,7 +1,5 @@
 import clipboard
 import time
-
-from argon2 import Type
 from selenium.webdriver.common.by import By
 from Fields import AnalogWatches_Fields as Fields
 from selenium.webdriver.common import keys
@@ -13,20 +11,20 @@ def AnalogWatches_InventoryDetails(driver,x):
     # ---------------------- Price, Size and Inventory ---------------------------------
     print("Action : AnalogWatches Inventory Details")
     # Meesho Price
-    driver.find_element(By.XPATH, Fields.MeeshoPrice).send_keys('185')
+    driver.find_element(By.XPATH, Fields.MeeshoPrice).send_keys('220')
 
 
 
     # Return price
     driver.find_element(By.XPATH, Fields.ReturnPrice).send_keys(keys.Keys.CONTROL + 'a' + keys.Keys.BACK_SPACE)
-    driver.find_element(By.XPATH, Fields.ReturnPrice).send_keys('183')
+    driver.find_element(By.XPATH, Fields.ReturnPrice).send_keys('215')
 
     # MRP
     driver.find_element(By.XPATH, Fields.MRP).send_keys('999')
 
     # HSN Code
+    driver.implicitly_wait(1)
     driver.find_element(By.XPATH, Fields.HSNCode).click()
-
     driver.implicitly_wait(1)
     HSNCodeList = driver.find_elements(By.XPATH, Fields.DropDownList)
     for r in HSNCodeList:
@@ -34,10 +32,10 @@ def AnalogWatches_InventoryDetails(driver,x):
             r.click()
             break
 
-    # time.sleep(1)
-    driver.implicitly_wait(1)
+
 
     # GST
+    driver.implicitly_wait(1)
     driver.find_element(By.XPATH, Fields.GST).click()
 
     driver.implicitly_wait(1)
@@ -56,7 +54,8 @@ def AnalogWatches_InventoryDetails(driver,x):
 
 
     # Product Name
-    clipboard.copy(x+' Men Boys Analog Watch - For Men & Men Formal Black Artificial Leather Belt {B2+G2}')
+
+    clipboard.copy(x+" Men's Combo of Black Color Sunglasses with Wallet And Watch And Cable Protector {S2+w2+G4+CP}")
     driver.find_element(By.XPATH, Fields.ProductName).send_keys(keys.Keys.CONTROL + 'v')
 
 
@@ -64,10 +63,11 @@ def AnalogWatches_InventoryDetails(driver,x):
     driver.execute_script("window.scrollBy(0,500)", "")
 
     # Size
+    driver.implicitly_wait(1)
     driver.find_element(By.XPATH, Fields.Size).click()
     time.sleep(1)
     # driver.implicitly_wait(1)
-    driver.find_element(By.XPATH, '//div[@class="MuiBox-root css-759u60"]//*[name()="svg"]').click()
+    driver.find_element(By.XPATH, "//ul[@role='menu']/div[2]/div//*[name()='svg']").click()
     driver.find_element(By.XPATH, '//div[@role="presentation"]//button[2]').click()
     time.sleep(1)
 
@@ -88,7 +88,7 @@ def AnalogWatches_InventoryDetails(driver,x):
 
 def AnalogWatches_ProductDetails(driver):
 
-    print("Action : Wallet Product Details")
+    print("Action : Analog Watches Product Details")
 
     # Color
     driver.find_element(By.XPATH, Fields.Color).click()
@@ -106,7 +106,7 @@ def AnalogWatches_ProductDetails(driver):
     driver.implicitly_wait(1)
     DisplayTypeList = driver.find_elements(By.XPATH, Fields.DropDownList)
     for r in DisplayTypeList:
-        if 'Analog' in r.text:
+        if 'Analog' == r.text:
             r.click()
             break
 
@@ -128,7 +128,7 @@ def AnalogWatches_ProductDetails(driver):
     driver.implicitly_wait(1)
     OccasionList = driver.find_elements(By.XPATH, Fields.DropDownList)
     for r in OccasionList:
-        if 'Formal' in r.text:
+        if 'Casual' == r.text:
             r.click()
             break
 
@@ -199,19 +199,19 @@ def AnalogWatches_ProductDetails(driver):
 
 def AnalogWatches_OtherAttributes(driver):
 
-    print("Action : Wallet Other Attributes")
+    print("Action : AnalogWatches Other Attributes")
 
 
-    driver.implicitly_wait(1)
-    # AddOn
-    driver.find_element(By.XPATH, Fields.AddOn).click()
-    # time.sleep(1)
-    driver.implicitly_wait(1)
-    AddOnList = driver.find_elements(By.XPATH, Fields.DropDownList)
-    for r in AddOnList:
-        if 'Belt' in r.text:
-            r.click()
-            break
+    # driver.implicitly_wait(1)
+    # # AddOn
+    # driver.find_element(By.XPATH, Fields.AddOn).click()
+    # # time.sleep(1)
+    # driver.implicitly_wait(1)
+    # AddOnList = driver.find_elements(By.XPATH, Fields.DropDownList)
+    # for r in AddOnList:
+    #     if 'Belt' in r.text:
+    #         r.click()
+    #         break
 
     # # Case
     # driver.implicitly_wait(1)
@@ -257,16 +257,16 @@ def AnalogWatches_OtherAttributes(driver):
     #         r.click()
     #         break
 
-    # DialColour
-    driver.implicitly_wait(1)
-    driver.find_element(By.XPATH, Fields.DialColour).click()
-    # time.sleep(1)
-    driver.implicitly_wait(1)
-    DialColourList = driver.find_elements(By.XPATH, Fields.DropDownList)
-    for r in DialColourList:
-        if 'Black' in r.text:
-            r.click()
-            break
+    # # DialColour
+    # driver.implicitly_wait(1)
+    # driver.find_element(By.XPATH, Fields.DialColour).click()
+    # # time.sleep(1)
+    # driver.implicitly_wait(1)
+    # DialColourList = driver.find_elements(By.XPATH, Fields.DropDownList)
+    # for r in DialColourList:
+    #     if 'Black' in r.text:
+    #         r.click()
+    #         break
 
     # # DialDesign
     # driver.implicitly_wait(1)
@@ -336,6 +336,7 @@ def AnalogWatches_OtherAttributes(driver):
             r.click()
             break
 
+
     # NetQuantity
     driver.implicitly_wait(1)
     driver.find_element(By.XPATH, Fields.NetQuantity).click()
@@ -343,7 +344,7 @@ def AnalogWatches_OtherAttributes(driver):
     driver.implicitly_wait(1)
     NetQuantityList = driver.find_elements(By.XPATH, Fields.DropDownList)
     for r in NetQuantityList:
-        if '2' in r.text:
+        if '3' in r.text:
             r.click()
             break
 
@@ -382,5 +383,5 @@ def AnalogWatches_OtherAttributes(driver):
 
     # Description
     driver.implicitly_wait(1)
-    clipboard.copy(r'Men Boys Analog Watch - For Men & Men Formal Black Artificial Leather Belt {B2+G2}')
+    clipboard.copy("Men's Combo of Black Color Sunglasses with Wallet And Watch And Cable Protector {S2+w2+G4+CP}")
     driver.find_element(By.XPATH, Fields.Description).send_keys(keys.Keys.CONTROL + 'v')

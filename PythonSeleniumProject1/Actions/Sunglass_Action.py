@@ -1,7 +1,5 @@
 import clipboard
 import time
-
-from argon2 import Type
 from selenium.webdriver.common.by import By
 from Fields import Sunglass_Fields as Fields
 from selenium.webdriver.common import keys
@@ -13,13 +11,13 @@ def Sunglass_InventoryDetails(driver,x):
     # ---------------------- Price, Size and Inventory ---------------------------------
     print("Action : Sunglass Inventory Details")
     # Meesho Price
-    driver.find_element(By.XPATH, Fields.MeeshoPrice).send_keys('140')
+    driver.find_element(By.XPATH, Fields.MeeshoPrice).send_keys('300')
 
 
 
     # Return price
     driver.find_element(By.XPATH, Fields.ReturnPrice).send_keys(keys.Keys.CONTROL + 'a' + keys.Keys.BACK_SPACE)
-    driver.find_element(By.XPATH, Fields.ReturnPrice).send_keys('135')
+    driver.find_element(By.XPATH, Fields.ReturnPrice).send_keys('295')
 
     # MRP
     driver.find_element(By.XPATH, Fields.MRP).send_keys('999')
@@ -54,7 +52,7 @@ def Sunglass_InventoryDetails(driver,x):
 
 
     # Product Name
-    clipboard.copy(x+' Men\'s Combo of Black Color Belt with Black Sunglass {B2+S2}')
+    clipboard.copy(x+" Men's Combo Wallet And Watch And Sunglasses And Black Magnet Bluetooth {s2+w2+G4+bm}")
     driver.find_element(By.XPATH, Fields.ProductName).send_keys(keys.Keys.CONTROL + 'v')
 
 
@@ -78,6 +76,8 @@ def Sunglass_ProductDetails(driver):
 
     print("Action : Sunglass Product Details")
 
+    driver.execute_script("window.scrollBy(0, 500)", "")
+
     # Frame_Color
     driver.implicitly_wait(1)
     driver.find_element(By.XPATH, Fields.Frame_Color).click()
@@ -96,7 +96,7 @@ def Sunglass_ProductDetails(driver):
     driver.implicitly_wait(1)
     Frame_MaterialList = driver.find_elements(By.XPATH, Fields.DropDownList)
     for r in Frame_MaterialList:
-        if 'Fiber' in r.text:
+        if 'Fiber & Plastic' in r.text:
             r.click()
             break
 
@@ -116,13 +116,12 @@ def Sunglass_ProductDetails(driver):
     # Lens_Color
     driver.implicitly_wait(1)
     driver.find_element(By.XPATH, Fields.Lens_Color).click()
-    # time.sleep(1)
     driver.implicitly_wait(1)
     Lens_ColorList = driver.find_elements(By.XPATH, Fields.DropDownList)
-    # driver.find_element(By.XPATH, Fields.Search).send_keys('4')
-    # time.sleep(2)
+    driver.implicitly_wait(1)
     for r in Lens_ColorList:
         if 'Black' in r.text:
+            driver.implicitly_wait(5)
             r.click()
             break
 
@@ -132,33 +131,32 @@ def Sunglass_ProductDetails(driver):
     # time.sleep(1)
     driver.implicitly_wait(1)
     Lens_TypeList = driver.find_elements(By.XPATH, Fields.DropDownList)
-    # driver.find_element(By.XPATH, Fields.Search).send_keys('4')
-    # time.sleep(2)
+    driver.implicitly_wait(1)
     for r in Lens_TypeList:
-        if 'Polarized' in r.text:
+        if 'Polarized' == r.text:
+            driver.implicitly_wait(5)
             r.click()
             break
 
 
     # NetQuantity
-    driver.implicitly_wait(1)
     driver.find_element(By.XPATH, Fields.NetQuantity).click()
     # time.sleep(1)
-    driver.implicitly_wait(1)
     NetQuantityList = driver.find_elements(By.XPATH, Fields.DropDownList)
     for r in NetQuantityList:
-        if '2' in r.text:
+        if '4' in r.text:
             r.click()
             break
 
     # Shape
-    driver.implicitly_wait(1)
+    driver.implicitly_wait(5)
     driver.find_element(By.XPATH, Fields.Shape).click()
     # time.sleep(1)
-    driver.implicitly_wait(1)
+
     ShapeList = driver.find_elements(By.XPATH, Fields.DropDownList)
     for r in ShapeList:
-        if 'Rectangular' in r.text:
+        if 'Aviator' in r.text:
+            driver.implicitly_wait(5)
             r.click()
             break
 
@@ -190,6 +188,18 @@ def Sunglass_OtherAttributes(driver):
 
     print("Action : Sunglass Other Attributes")
 
+    # Warranty
+    driver.implicitly_wait(1)
+    driver.find_element(By.XPATH, Fields.Warranty).click()
+    driver.implicitly_wait(1)
+    WarrantyList = driver.find_elements(By.XPATH, Fields.DropDownList)
+    for r in WarrantyList:
+        if '12' in r.text:
+            time.sleep(1)
+            driver.implicitly_wait(5)
+            r.click()
+            break
+
 
     driver.implicitly_wait(1)
     # Occasion
@@ -199,22 +209,16 @@ def Sunglass_OtherAttributes(driver):
     OccasionList = driver.find_elements(By.XPATH, Fields.DropDownList)
     for r in OccasionList:
         if 'Style' in r.text:
+            driver.implicitly_wait(5)
             r.click()
             break
 
-    # Warranty
-    driver.implicitly_wait(1)
-    driver.find_element(By.XPATH, Fields.Warranty).click()
-    # time.sleep(1)
-    driver.implicitly_wait(1)
-    WarrantyList = driver.find_elements(By.XPATH, Fields.DropDownList)
-    for r in WarrantyList:
-        if '12' in r.text:
-            r.click()
-            break
 
 
     # Description
     driver.implicitly_wait(1)
-    clipboard.copy("Men's Combo of Black Color Belt with Black Sunglass {B2+S2}")
+    clipboard.copy("Men's Combo Wallet And Watch And Sunglasses And Black Magnet Bluetooth {s2+w2+G4+bm}")
     driver.find_element(By.XPATH, Fields.Description).send_keys(keys.Keys.CONTROL + 'v')
+
+
+

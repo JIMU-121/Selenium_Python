@@ -50,7 +50,7 @@ def ClearCache(driver):
     for handel in all_handlers:
         if handel != parentwindow:
             driver.switch_to.window(handel)
-            for s in range(1, 3):
+            for s in range(1, 4):
                 driver.get('chrome://settings/clearBrowserData')
                 time.sleep(1)
                 driver.execute_script('document.querySelector("settings-ui").shadowRoot.querySelector("settings-main#main").shadowRoot.querySelector("settings-basic-page").shadowRoot.querySelector("settings-privacy-page").shadowRoot.querySelector("settings-clear-browsing-data-dialog").shadowRoot.querySelector("#clearBrowsingDataConfirm.action-button").click();')

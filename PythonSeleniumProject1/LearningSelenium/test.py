@@ -4,30 +4,28 @@ import random
 import sys
 from selenium import webdriver
 from selenium.common import NoSuchElementException, ElementClickInterceptedException, StaleElementReferenceException
-from selenium.webdriver.common import keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from ExtractImages import FetchingImages
 from Products import Fields, Actions, Categories
-from Actions import Sunglass_Action   as Action, Notifyer as Notify, ManageCache as Cache
+from Actions import AnalogWatches_Action as Action, Notifyer as Notify, ManageCache as Cache
 from openpyxl import Workbook, load_workbook
-from numba import jit
-
 
 
 
 # Files Path
-ProImgDir = 'C:\\Users\\bhatt\\Downloads\\Telegram Desktop\\b2+s2\\images'
-SlideImagesPath = 'C:\\Users\\bhatt\\Downloads\\Telegram Desktop\\b2+s2\\slide'
-path = 'C:\\Users\\bhatt\\Downloads\\Telegram Desktop\\b2+s2'
-
+ProImgDir = 'C:\\Users\\bhatt\\Downloads\\Telegram Desktop\\g4+w2+s2+cp\\images'
+SlideImagesPath = 'C:\\Users\\bhatt\\Downloads\\Telegram Desktop\\g4+w2+s2+cp\\slide'
+path = 'C:\\Users\\bhatt\\Downloads\\Telegram Desktop\\g4+w2+s2+cp'
+category = Categories.AnalogWatches
+Slide_Images = True
 
 options = webdriver.ChromeOptions()
-options.add_experimental_option('excludeSwitches', ['enable-logging'])
+# options.add_experimental_option('excludeSwitches', ['enable-logging'])
+
 
 driver = webdriver.Chrome(options=options)
-
 
 
 wb = load_workbook('Products.xlsx')
@@ -43,18 +41,20 @@ def Restart():
 def UploadProducts(images, driver):
     row = 1
     col = 1
-    ibtn = 1
+    ibtn = 0
     for x in images:
         try:
 
             OverAllTimeStarts = time.time()
             print('-----------------------------------------------------------------------------------')
-            SlideImages = FetchingImages.SlideImages(SlideImagesPath)
+
+
 
             a = ws2['A1']
             n = int(a.value)
 
             Cache.ClearCache(driver)
+            print("Email Account : "+Actions.email_AC)
 
             AddSingleCatlog = driver.find_element(By.XPATH,
                                                   '//*[@id="mainWrapper"]/div/div[1]/div[2]/div[1]/div[1]/div/button[2]')
@@ -64,11 +64,11 @@ def UploadProducts(images, driver):
             try:
 
                 driver.implicitly_wait(7)
-                Categories.Category(driver, Categories.Category_Sunglass(driver))
+                Categories.Category(driver, Categories.Category(driver, category))
             except Exception as e:
                 driver.refresh()
                 driver.implicitly_wait(10)
-                Categories.Category(driver, Categories.Category_Sunglass(driver))
+                Categories.Category(driver, Categories.Category(driver, category))
 
             # Upload Product Front Image
             UploadProdImage = driver.find_element(By.XPATH, '//*[@id="addImages"]').send_keys(x)
@@ -84,11 +84,24 @@ def UploadProducts(images, driver):
             # time.sleep(8)
             driver.implicitly_wait(15)
 
-            # i Button
-            if ibtn <= 4:
-                driver.implicitly_wait(15)
-                driver.find_element(By.XPATH,
-                                    '//p[normalize-space()="Wrong/Defective Returns Price"]//parent::div//parent::div/div[2]/div/div/div/div').click()
+
+            try:
+                idiv = "//span[normalize-space()='Ok, Understood']//parent::button"
+                driver.implicitly_wait(5)
+
+                if driver.find_element(By.XPATH, idiv).is_enabled():
+                    driver.find_element(By.XPATH,'//p[normalize-space()="Wrong/Defective Returns Price"]//parent::div//parent::div/div[2]/div/div/div/div').click()
+                    print("I-Button:True")
+
+
+            except Exception as e:
+                    print("I-Button:False")
+
+            # # i Button
+            # if ibtn <= 4:
+            #     driver.implicitly_wait(15)
+            #     driver.find_element(By.XPATH,
+            #                         '//p[normalize-space()="Wrong/Defective Returns Price"]//parent::div//parent::div/div[2]/div/div/div/div').click()
 
             time.sleep(2)
 
@@ -99,10 +112,12 @@ def UploadProducts(images, driver):
             driver.implicitly_wait(20)
             UploadSlideImages = driver.find_element(By.XPATH, '//input[@id="addMoreImagesInput"]')
 
-            # Upload Product Slide Image
-            for s in SlideImages:
-                UploadSlideImages.send_keys(s)
-                time.sleep(1)
+            if Slide_Images == True:
+                # Upload Product Slide Image
+                SlideImages = FetchingImages.SlideImages(SlideImagesPath)
+                for s in SlideImages:
+                    UploadSlideImages.send_keys(s)
+                    time.sleep(1)
 
             char1 = random.choice(range(65, 90))
             char2 = random.choice(range(65, 90))
@@ -110,7 +125,7 @@ def UploadProducts(images, driver):
             alpha = chr(char1)
             # ------------------------------------------------------------------------------------------------------
             start = time.time()
-            Action.Sunglass_InventoryDetails(driver, alpha)
+            Action.AnalogWatches_InventoryDetails(driver, alpha)
             end = time.time()
             t = end - start
             print("TIme Taken : " + str(t))
@@ -119,7 +134,7 @@ def UploadProducts(images, driver):
 
             # ------------------------------------------------------------------------------------------------------
             start = time.time()
-            Action.Sunglass_ProductDetails(driver)
+            Action.AnalogWatches_ProductDetails(driver)
             end = time.time()
             t = end - start
             print("Time Taken : " + str(t))
@@ -128,7 +143,7 @@ def UploadProducts(images, driver):
 
             # ------------------------------------------------------------------------------------------------------
             start = time.time()
-            Action.Sunglass_OtherAttributes(driver)
+            Action.AnalogWatches_OtherAttributes(driver)
             end = time.time()
             t = end - start
             print("Time Taken : " + str(t))
@@ -139,12 +154,11 @@ def UploadProducts(images, driver):
             row += 1
             ibtn += 1
 
-            SubmitButton = "//div[@class='css-nsnuu0']/div/button/span[contains(text(), 'Submit')]//parent::button"
+            SubmitButton = "//div[@data-testid='singleCatalogProductAdd']/div/div/button/span[contains(text(), 'Submit')]//parent::button"
             driver.find_element(By.XPATH, SubmitButton).click()
             time.sleep(1)
             driver.find_element(By.XPATH, "//div[@role='dialog']/div/div[2]/button/span[contains(text(), 'Proceed')]//parent::button").click()
-            # os.replace(x, destination)
-            # time.sleep(10)
+
             driver.implicitly_wait(15)
             print('Done')
             n += 1
@@ -165,7 +179,7 @@ def UploadProducts(images, driver):
         except (ElementClickInterceptedException, NoSuchElementException, StaleElementReferenceException) as e:
             print("Exception : " + str(e))
             Notify.ExceptionCatched(str(e))
-            discardbtn = '//div[@class="css-nsnuu0"]//button//span[contains(text(),"Discard Catalog")]'
+            discardbtn = "//div[@data-testid='singleCatalogProductAdd']/div/button/span[contains(text(), 'Discard')]//parent::button"
             process = '//div[@class="css-1qehpk6"]//div[2]//button/span[contains(text(), "Proceed")]'
 
             wait = WebDriverWait(driver, 10, ignored_exceptions=[ElementClickInterceptedException])

@@ -1,6 +1,6 @@
 # -------------------------Trimmer Product Fields ---------------------------
 
-DropDownList = '//ul[@role="menu"]//div[@class="MuiBox-root css-0"]//li'
+DropDownList = "//ul[@role='menu']/div[2]/li"
 Search = '//input[@placeholder="Search"]'
 # ------------------------------------------------------ Stock and Inventory Details
 MeeshoPrice = '//input[@id="meesho_price"]'
